@@ -1,0 +1,23 @@
+<div>
+    <form (ngSubmit)="getBooks()">
+        <input type="text" name="search" class="srch" placeholder="Search.." [(ngModel)]="search"
+            [ngModelOptions]="{standalone: true}" #ctrl="ngModel" required />
+    </form>
+</div>
+
+
+<div class="container">
+    <div class="card-columns">
+        <div class="card" style="width:200px" *ngFor="let book of books">
+            <div *ngIf="book.volumeInfo.imageLinks">
+                <img class="card-img-top" src={{book.volumeInfo.imageLinks.thumbnail}} alt="Card image"
+                    style="width:30%">
+                <div class="card-body">
+                    <h4 class="card-title">{{ book.volumeInfo.title }}</h4>
+                    <p class="card-text">{{book.volumeInfo.authors}}</p>
+                    <a href={{book.volumeInfo.infoLink}} target="_blank" class="btn btn-primary">See more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
